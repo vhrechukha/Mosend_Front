@@ -1,0 +1,8 @@
+<mat-card class="example-card">
+  <mat-card-content>
+    <p>{{ message }}</p>
+  </mat-card-content>
+  <mat-card-footer *ngIf="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

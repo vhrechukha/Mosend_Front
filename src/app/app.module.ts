@@ -8,15 +8,28 @@ import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {CustomMaterialModule} from './shared/material.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { CustomMaterialModule } from './shared/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './pages/signup/signup.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { MessageComponent } from './components/message/message.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    UserComponent,
+    SignupComponent,
+    SigninComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    SpinnerComponent,
+    MessageComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +38,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     BrowserAnimationsModule,
     CustomMaterialModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

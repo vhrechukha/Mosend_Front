@@ -17,6 +17,10 @@
     </button>
   </a>
   <a *ngIf="!currentUser"  href="/signup">
-    <button mat-raised-button color="accent">Sign in/Sign up</button>
+    <button mat-raised-button color="accent">Sign up</button>
+  </a>
+  <p>/</p>
+  <a *ngIf="!currentUser"  href="/signin">
+    <button mat-raised-button color="accent">Sign in</button>
   </a>
 </mat-toolbar>
