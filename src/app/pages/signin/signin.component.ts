@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import {ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { AuthResponses } from 'src/app/core/responses';
+import { EmailResponses, EmailResponseTypes } from 'src/app/core/responses';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class SigninComponent implements OnInit {
   messageLoading = false;
   submitted = false;
   result = '';
-  mCode: 'EMAIL_VERIFIED' | null = null;
+  mCode: EmailResponseTypes | null = null;
   message: string;
 
   emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
@@ -28,9 +28,13 @@ export class SigninComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
   ) {
-    this.mCode = this.activatedRouter.snapshot.queryParamMap.get('mCode') as 'EMAIL_VERIFIED' | null;
+    if (this.authService.currentUserValue) {
+      this.router.navigate(['/user']);
+    }
+
+    this.mCode = this.activatedRouter.snapshot.queryParamMap.get('mCode') as EmailResponseTypes | null;
     if (this.mCode) {
-      this.message = AuthResponses[this.mCode];
+      this.message = EmailResponses[this.mCode];
     }
   }
 

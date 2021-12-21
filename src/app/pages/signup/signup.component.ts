@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import {ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { AuthResponseTypes, EmailResponses, EmailResponseTypes } from 'src/app/core/responses';
+import { EmailResponses, EmailResponseTypes } from 'src/app/core/responses';
 import { AuthService } from '../../core/services/auth.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
     private authService: AuthService,
   ) {
     if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/user']);
     }
   }
 

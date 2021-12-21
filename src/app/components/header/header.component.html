@@ -11,7 +11,7 @@
       <mat-icon>folder</mat-icon>
     </button>
   </a>
-  <a *ngIf="currentUser"  href="/settings">
+  <a *ngIf="currentUser"  href="/user">
     <button mat-icon-button class="icon" aria-label="Icon-button with settings icon">
       <mat-icon>settings</mat-icon>
     </button>
@@ -19,7 +19,7 @@
   <a *ngIf="!currentUser"  href="/signup">
     <button mat-raised-button color="accent">Sign up</button>
   </a>
-  <p>/</p>
+  <p *ngIf="!currentUser">/</p>
   <a *ngIf="!currentUser"  href="/signin">
     <button mat-raised-button color="accent">Sign in</button>
   </a>
