@@ -29,7 +29,7 @@ import { UserComponent } from './user/user.component';
     HeaderComponent,
     SpinnerComponent,
     MessageComponent,
-    UserComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +39,7 @@ import { UserComponent } from './user/user.component';
     CustomMaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

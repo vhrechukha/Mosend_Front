@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { UpdatePassword, User } from '../interfaces';
 import { environment } from 'src/environments/environment';
-import { AuthResponses, AuthResponseTypes, EmailResponseTypes } from '../responses';
+import { EmailResponseTypes } from '../responses';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
