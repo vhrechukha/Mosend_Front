@@ -1,4 +1,6 @@
-import { Component, Input, SimpleChanges, OnChanges} from '@angular/core';
+import {
+  Component, Input, SimpleChanges, OnChanges
+} from '@angular/core';
 
 @Component({
   selector: 'app-message',
@@ -7,6 +9,7 @@ import { Component, Input, SimpleChanges, OnChanges} from '@angular/core';
 })
 export class MessageComponent implements OnChanges {
   @Input() message = '';
+
   @Input() loading = false;
 
   ngOnChanges(changes: SimpleChanges) {

@@ -21,5 +21,6 @@ enum FileResponse {
 
 type FileResponseTypes = 'SCHEDULED_FOR_CHECK';
 
-
-export { AuthResponses, EmailResponses, FileResponse, AuthResponseTypes, EmailResponseTypes, FileResponseTypes };
+export {
+  AuthResponses, EmailResponses, FileResponse, AuthResponseTypes, EmailResponseTypes, FileResponseTypes
+};

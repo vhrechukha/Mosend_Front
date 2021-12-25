@@ -1,6 +1,6 @@
-import { User } from ".";
+import { User } from '.';
 
-export interface  SigninResponse {
+export interface SigninResponse {
     token: string;
     user: User;
 }

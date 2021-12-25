@@ -3,7 +3,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { UpdatePassword, SigninResponse, User, Message } from '../interfaces';
+import {
+  UpdatePassword, SigninResponse, User, Message
+} from '../interfaces';
 import { environment } from '../../../environments/environment';
 import { EmailResponseTypes } from '../responses';
 
@@ -12,19 +14,23 @@ export class AuthService {
   backendUrl = environment.backendUrl;
 
   private currentUserSubject: BehaviorSubject<User | null>;
+
   private httpOptions: { headers: HttpHeaders; };
 
   public currentUser: Observable<User | null>;
+
   public token: string | null;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User | null>(JSON.parse(localStorage.getItem('currentUser') || 'null'));
+    this.currentUserSubject = new BehaviorSubject<User | null>(
+      JSON.parse(localStorage.getItem('currentUser') || 'null')
+    );
     this.currentUser = this.currentUserSubject.asObservable();
     this.token = null;
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization':  `Bearer ${this.token}`
+        Authorization: `Bearer ${this.token}`
       })
     };
   }
@@ -71,7 +77,6 @@ export class AuthService {
       .pipe(map(data => data));
   }
 
-
   resetPassword(id: string, password: string): Observable<Message> {
     return this.http
       .post<Message>(`${this.backendUrl}/auth/resetPassword`, password, {
@@ -83,7 +88,7 @@ export class AuthService {
 
   updatePassword(id: string, data: UpdatePassword): Observable<Message> {
     return this.http
-      .post<Message> (`${this.backendUrl}/auth/resetPassword`, data, {
+      .post<Message>(`${this.backendUrl}/auth/resetPassword`, data, {
         ...this.httpOptions,
         params: new HttpParams().set('id', id)
       })
@@ -96,4 +101,3 @@ export class AuthService {
     this.currentUserSubject.next(null);
   }
 }
-

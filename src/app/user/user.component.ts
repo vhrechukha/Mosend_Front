@@ -22,12 +22,12 @@ export class UserComponent implements OnInit {
 
   async ngOnInit() {
     this.user = await this.authService.currentUserValue;
-    console.log(this.user)
+    console.log(this.user);
   }
 
   logout() {
     this.authService.logout();
-    console.log('logout')
+    console.log('logout');
     this.router.navigate(['/']);
   }
 }
