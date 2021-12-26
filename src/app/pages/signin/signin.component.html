@@ -1,6 +1,6 @@
-<app-message *ngIf="mCode" [message]="message" ></app-message>
+<app-message *ngIf="mCode" [message]="message"></app-message>
 
-<div *ngIf="!loading"  class="full-container form" fxLayout="column" fxLayoutAlign="center center">
+<div *ngIf="!loading" class="full-container form" fxLayout="column" fxLayoutAlign="center center">
   <h1>Sign in</h1>
   <form class="form-fields" fxLayout="column" [formGroup]="signinForm" (submit)="onSubmit()">
     <mat-form-field class="form-field" appearance="legacy">
@@ -18,6 +18,7 @@
         <span *ngIf="signinForm.controls.password.errors.required">This field is mandatory.</span>
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Log In</button>
+    <button mat-raised-button color="primary" type="submit">Sign in</button>
   </form>
+  <a class="question" href="/resendEmail?type=RESET_PASSWORD_EMAIL_SENT">Can't remember your password?</a>
 </div>

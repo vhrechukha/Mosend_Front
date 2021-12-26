@@ -17,6 +17,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { MessageComponent } from './components/message/message.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserComponent } from './user/user.component';
+import { ResendEmailComponent } from './pages/resendEmail/resendEmail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UserComponent } from './user/user.component';
     HeaderComponent,
     SpinnerComponent,
     MessageComponent,
-    UserComponent
+    UserComponent,
+    ResendEmailComponent
   ],
   imports: [
     BrowserModule,

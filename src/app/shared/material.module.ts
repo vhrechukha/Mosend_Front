@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -11,7 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressSpinnerModule,
     MatCheckboxModule,
     FormsModule,
-    MatProgressBarModule,
+    MatProgressBarModule
   ],
   exports: [
     CommonModule,
@@ -43,7 +43,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressSpinnerModule,
     MatCheckboxModule,
     FormsModule,
-    MatProgressBarModule,
-  ],
+    MatProgressBarModule
+  ]
 })
 export class CustomMaterialModule { }

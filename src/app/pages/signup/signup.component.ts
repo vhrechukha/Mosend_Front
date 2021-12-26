@@ -1,5 +1,16 @@
+// eslint-disable-next-line max-classes-per-file
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
@@ -9,7 +20,9 @@ import { AuthService } from '../../core/services/auth.service';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
-    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+    const invalidParent = !!(
+      control && control.parent && control.parent.invalid && control.parent.dirty
+    );
 
     return (invalidCtrl || invalidParent);
   }
@@ -22,33 +35,40 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
+
   loading = false;
+
   messageLoading = false;
+
   submitted = false;
+
   mCode: EmailResponseTypes | null = null;
+
   message: string;
 
   matcher = new MyErrorStateMatcher();
 
   nameRegx = /^[a-zA-Z ]+$/;
-  emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
+
+  emailRegx = /^(([^<>+()[\]\\.,;:\s@"-#$%&=]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
 
   constructor(
     private formBuilder: FormBuilder,
     private activatedRouter: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     if (this.authService.currentUserValue) {
       this.router.navigate(['/user']);
     }
   }
 
-  checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
-    let pass = group.get('password').value;
-    let confirmPass = group.get('confirmPassword').value
-    return pass === confirmPass ? null : { notSame: true }
-  }
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    const pass = group.get('password').value;
+    const confirmPass = group.get('confirmPassword').value;
+
+    return pass === confirmPass ? null : { notSame: true };
+  };
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -56,11 +76,13 @@ export class SignupComponent implements OnInit {
       email: [null, [Validators.required, Validators.pattern(this.emailRegx)]],
       password: [null, Validators.required],
       confirmPassword: [null, Validators.required]
-    },  { validators: this.checkPasswords });
+    }, { validators: this.checkPasswords });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.signupForm.controls; }
+  get f() {
+    return this.signupForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -73,14 +95,14 @@ export class SignupComponent implements OnInit {
     this.messageLoading = true;
 
     this.authService.signup({
-          name: this.signupForm.value.name,
-          email: this.signupForm.value.email,
-          password: this.signupForm.value.password,
-      })
+      name: this.signupForm.value.name,
+      email: this.signupForm.value.email,
+      password: this.signupForm.value.password
+    })
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data)
+          console.log(data);
           this.mCode = data.mCode;
           this.message = EmailResponses[this.mCode];
           this.messageLoading = false;
@@ -88,6 +110,7 @@ export class SignupComponent implements OnInit {
         error => {
           this.messageLoading = true;
           this.loading = false;
-        });
+        }
+      );
   }
 }

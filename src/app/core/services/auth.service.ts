@@ -3,7 +3,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { UpdatePassword, SigninResponse, User, Message } from '../interfaces';
+import {
+  UpdatePassword, SigninResponse, User, Message
+} from '../interfaces';
 import { environment } from '../../../environments/environment';
 import { EmailResponseTypes } from '../responses';
 
@@ -12,9 +14,11 @@ export class AuthService {
   backendUrl = environment.backendUrl;
 
   private currentUserSubject: BehaviorSubject<User | null>;
+
   private httpOptions: { headers: HttpHeaders; };
 
   public currentUser: Observable<User | null>;
+
   public token: string | null;
 
   constructor(private http: HttpClient) {
@@ -24,13 +28,17 @@ export class AuthService {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization':  `Bearer ${this.token}`
+        Authorization: `Bearer ${this.token}`
       })
     };
   }
 
   public get currentUserValue(): User | null {
     return this.currentUserSubject?.value;
+  }
+
+  public get currentToken(): string | null {
+    return this.token;
   }
 
   signup(user: {
@@ -71,7 +79,6 @@ export class AuthService {
       .pipe(map(data => data));
   }
 
-
   resetPassword(id: string, password: string): Observable<Message> {
     return this.http
       .post<Message>(`${this.backendUrl}/auth/resetPassword`, password, {
@@ -83,7 +90,7 @@ export class AuthService {
 
   updatePassword(id: string, data: UpdatePassword): Observable<Message> {
     return this.http
-      .post<Message> (`${this.backendUrl}/auth/resetPassword`, data, {
+      .post<Message>(`${this.backendUrl}/auth/resetPassword`, data, {
         ...this.httpOptions,
         params: new HttpParams().set('id', id)
       })
@@ -96,4 +103,3 @@ export class AuthService {
     this.currentUserSubject.next(null);
   }
 }
-
