@@ -3,30 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
-  FormGroupDirective,
-  NgForm,
   ValidationErrors,
   ValidatorFn,
   Validators
 } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmailResponses, EmailResponseTypes } from 'src/app/core/responses';
 import { AuthService } from '../../core/services/auth.service';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
-    const invalidParent = !!(
-      control && control.parent && control.parent.invalid && control.parent.dirty
-    );
-
-    return (invalidCtrl || invalidParent);
-  }
-}
+import { CustomErrorStateMatcher } from '../../core/helpers/customErrorStateMatcher';
 
 @Component({
   selector: 'app-signup',
@@ -46,7 +33,7 @@ export class SignupComponent implements OnInit {
 
   message: string;
 
-  matcher = new MyErrorStateMatcher();
+  matcher = new CustomErrorStateMatcher();
 
   nameRegx = /^[a-zA-Z ]+$/;
 
