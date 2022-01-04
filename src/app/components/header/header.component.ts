@@ -8,7 +8,7 @@ import { User } from '../../core/interfaces';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  currentUser: User | null = null;
+  currentUser?: User = null;
 
   constructor(
     private authService: AuthService,
