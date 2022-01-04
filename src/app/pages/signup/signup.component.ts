@@ -2,22 +2,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl,
-  ValidationErrors, FormControl, FormGroupDirective, NgForm
+  ValidationErrors
 } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+
 import { EmailResponses, EmailResponseTypes } from 'src/app/core/responses';
 import { AuthService } from '../../core/services/auth.service';
-
-export class CustomErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
-    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
-
-    return (invalidCtrl || invalidParent);
-  }
-}
+import {CustomErrorStateMatcher} from '../../core/helpers/customErrorStateMatcher';
 
 @Component({
   selector: 'app-signup',
