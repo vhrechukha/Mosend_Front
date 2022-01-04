@@ -16,7 +16,6 @@ export class HeaderComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
     if (changes?.currentUser) {
       this.currentUser = changes.currentUser.currentValue;
     }
