@@ -1,5 +1,6 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { User } from '../../core/interfaces';
 
 @Component({
   selector: 'app-layout-header',
@@ -7,7 +8,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  currentUser: any = false;
+  currentUser: User | boolean = false;
 
   constructor(
     private authService: AuthService,
