@@ -22,7 +22,9 @@ export class AuthService {
   public token: string | null;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User | null>(JSON.parse(localStorage.getItem('currentUser') || 'null'));
+    this.currentUserSubject = new BehaviorSubject<User | null>(
+      JSON.parse(localStorage.getItem('currentUser') || 'null')
+    );
     this.currentUser = this.currentUserSubject.asObservable();
     this.token = null;
     this.httpOptions = {
