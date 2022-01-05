@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { User } from '../../core/interfaces';
 
 @Component({
   selector: 'app-layout-header',
@@ -6,14 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  currentUser: any = false;
+  currentUser?: User = null;
 
-  /*constructor(
+  constructor(
     private authService: AuthService,
   ) {
-    this.authService.currentUser.subscribe((user)=>{
-      this.currentUser = user
-    })
-  }*/
+    this.currentUser = this.authService.currentUserValue;
+  }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes?.currentUser) {
+      this.currentUser = changes.currentUser.currentValue;
+    }
+  }
 }
