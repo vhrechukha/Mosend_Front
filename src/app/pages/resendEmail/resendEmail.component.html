@@ -1,0 +1,21 @@
+<app-message *ngIf="message" [message]="message"></app-message>
+
+<div class="full-container form" fxLayout="column" fxLayoutAlign="center center">
+  <h1>{{ headline }}</h1>
+  <form class="form-fields" fxLayout="column" [formGroup]="form" (submit)="onSubmit()">
+    <mat-form-field class="form-field" appearance="legacy">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" required>
+      <mat-error *ngIf="form.controls.email.touched && form.controls.email.invalid">
+        <span *ngIf="form.controls.email.errors.required">This field is mandatory.</span>
+        <span *ngIf="form.controls.email.errors.pattern">This field is invalid.</span>
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Reset</button>
+  </form>
+  <div fxLayoutAlign="center center">
+    <a class="question" href="/signin">Sign in</a>
+    <p class="question"> / </p>
+    <a class="question" href="/signup">Sign up</a>
+  </div>
+</div>

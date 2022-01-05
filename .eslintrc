@@ -12,6 +12,8 @@
   ],
   "rules": {
     "no-console": 0,
+    "lines-between-class-members": 0,
+    "class-methods-use-this": 0
     "max-len": ["error", {
       "code": 120
     }],

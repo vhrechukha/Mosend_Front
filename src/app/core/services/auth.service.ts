@@ -39,6 +39,10 @@ export class AuthService {
     return this.currentUserSubject?.value;
   }
 
+  public get currentToken(): string | null {
+    return this.token;
+  }
+
   signup(user: {
     name: string;
     email: string;

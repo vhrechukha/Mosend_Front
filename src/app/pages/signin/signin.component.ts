@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup, FormBuilder, Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { EmailResponses, EmailResponseTypes } from 'src/app/core/responses';
@@ -27,14 +25,13 @@ export class SigninComponent implements OnInit {
 
   message: string;
 
-  // eslint-disable-next-line max-len
-  emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
+  emailRegx = /^(([^<>+()[\]\\.,;:\s@"-#$%&=]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
 
   constructor(
     private formBuilder: FormBuilder,
     private activatedRouter: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     if (this.authService.currentUserValue) {
       this.router.navigate(['/user']);
@@ -54,7 +51,9 @@ export class SigninComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.signinForm.controls; }
+  get f() {
+    return this.signinForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;

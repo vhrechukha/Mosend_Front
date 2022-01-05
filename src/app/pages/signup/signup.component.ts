@@ -1,15 +1,20 @@
 // eslint-disable-next-line max-classes-per-file
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl,
-  ValidationErrors
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmailResponses, EmailResponseTypes } from 'src/app/core/responses';
 import { AuthService } from '../../core/services/auth.service';
-import {CustomErrorStateMatcher} from '../../core/helpers/customErrorStateMatcher';
+import { CustomErrorStateMatcher } from '../../core/helpers/customErrorStateMatcher';
+
 
 @Component({
   selector: 'app-signup',
@@ -33,13 +38,13 @@ export class SignupComponent implements OnInit {
 
   nameRegx = /^[a-zA-Z ]+$/;
 
-  emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
+  emailRegx = /^(([^<>+()[\]\\.,;:\s@"-#$%&=]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
 
   constructor(
     private formBuilder: FormBuilder,
     private activatedRouter: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     if (this.authService.currentUserValue) {
       this.router.navigate(['/user']);
@@ -49,6 +54,7 @@ export class SignupComponent implements OnInit {
   checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     const pass = group.get('password').value;
     const confirmPass = group.get('confirmPassword').value;
+
     return pass === confirmPass ? null : { notSame: true };
   };
 
@@ -62,7 +68,9 @@ export class SignupComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.signupForm.controls; }
+  get f() {
+    return this.signupForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;

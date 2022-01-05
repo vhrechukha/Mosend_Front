@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     if (!this.authService.currentUserValue) {
       this.router.navigate(['/']);
@@ -21,13 +21,12 @@ export class UserComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.user = await this.authService.currentUserValue;
-    console.log(this.user);
+    this.user = this.authService.currentUserValue;
   }
 
   logout() {
     this.authService.logout();
-    console.log('logout');
+
     this.router.navigate(['/']);
   }
 }

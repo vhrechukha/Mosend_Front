@@ -1,26 +1,30 @@
 <mat-toolbar color="primary">
   <span>mosend.</span>
   <span class="spacer"></span>
-  <a *ngIf="currentUser"  href="/upload">
-    <button mat-icon-button class="icon favorite-icon" aria-label="Icon-button with add_circle icon">
-      <mat-icon>add_circle</mat-icon>
-    </button>
-  </a>
-  <a *ngIf="currentUser"  href="/files">
-    <button mat-icon-button class="icon favorite-icon" aria-label="Icon-button with folder icon">
-      <mat-icon>folder</mat-icon>
-    </button>
-  </a>
-  <a *ngIf="currentUser"  href="/user">
-    <button mat-icon-button class="icon" aria-label="Icon-button with settings icon">
-      <mat-icon>settings</mat-icon>
-    </button>
-  </a>
-  <a *ngIf="!currentUser"  href="/signup">
-    <button mat-raised-button color="accent">Sign up</button>
-  </a>
-  <p *ngIf="!currentUser">/</p>
-  <a *ngIf="!currentUser"  href="/signin">
-    <button mat-raised-button color="accent">Sign in</button>
-  </a>
+  <ng-container *ngIf="currentUser">
+    <a href="/upload">
+      <button mat-icon-button class="icon favorite-icon" aria-label="Icon-button with add_circle icon">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </a>
+    <a href="/files">
+      <button mat-icon-button class="icon favorite-icon" aria-label="Icon-button with folder icon">
+        <mat-icon>folder</mat-icon>
+      </button>
+    </a>
+    <a href="/user">
+      <button mat-icon-button class="icon" aria-label="Icon-button with settings icon">
+        <mat-icon>settings</mat-icon>
+      </button>
+    </a>
+  </ng-container>
+  <ng-container *ngIf="!currentUser">
+    <a href="/signup">
+      <button mat-raised-button color="accent">Sign up</button>
+    </a>
+    <p>/</p>
+    <a href="/signin">
+      <button mat-raised-button color="accent">Sign in</button>
+    </a>
+  </ng-container>
 </mat-toolbar>
