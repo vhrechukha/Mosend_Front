@@ -32,9 +32,12 @@ enum EmailResettingHeadlines {
 
 enum FileResponse {
   SCHEDULED_FOR_CHECK = 'File was successfully scheduled for check.',
+  SHARE_LINK_VERIFIED = 'SHARE_LINK_VERIFIED',
 }
-
-type FileResponseTypes = 'SCHEDULED_FOR_CHECK';
+type FileResponseTypes = {
+  SCHEDULED_FOR_CHECK: 'SCHEDULED_FOR_CHECK',
+  SHARE_LINK_VERIFIED: 'SHARE_LINK_VERIFIED',
+};
 
 export {
   AuthResponses,

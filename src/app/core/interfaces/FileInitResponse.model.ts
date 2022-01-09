@@ -1,0 +1,21 @@
+export interface FileInitResponse {
+  chunk_count: number,
+  chunk_size: number,
+  filename: string,
+  filesize: number,
+  content_type: string,
+  max_download_count: number,
+  extension: string,
+  user: number,
+  s3_path: string,
+  expires_in: number | null,
+  download_count: number | null,
+  last_download_at: Date | null,
+  last_scan_date: Date | null,
+  scan_detection_info: string | null,
+  id: number,
+  s3_status: string,
+  scan_result: string | null,
+  created_at: Date,
+  updated_at: Date
+}

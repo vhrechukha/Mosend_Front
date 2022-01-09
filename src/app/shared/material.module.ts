@@ -13,6 +13,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -28,7 +30,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressSpinnerModule,
     MatCheckboxModule,
     FormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDividerModule,
+    MatPaginatorModule
   ],
   exports: [
     CommonModule,
@@ -43,7 +47,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressSpinnerModule,
     MatCheckboxModule,
     FormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDividerModule,
+    MatPaginatorModule
   ]
 })
 export class CustomMaterialModule { }
