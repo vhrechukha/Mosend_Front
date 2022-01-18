@@ -26,7 +26,7 @@ export class AuthService {
       JSON.parse(localStorage.getItem('currentUser') || 'null')
     );
     this.currentUser = this.currentUserSubject.asObservable();
-    this.token = null;
+    this.token = localStorage.getItem('token');
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -40,7 +40,8 @@ export class AuthService {
   }
 
   public get currentToken(): string | null {
-    return this.token;
+    console.log(localStorage.getItem('token'));
+    return localStorage.getItem('token');
   }
 
   signup(user: {

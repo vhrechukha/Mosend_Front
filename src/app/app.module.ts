@@ -18,6 +18,10 @@ import { MessageComponent } from './components/message/message.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserComponent } from './user/user.component';
 import { ResendEmailComponent } from './pages/resendEmail/resendEmail.component';
+import { FilesComponent } from './pages/files/files.component';
+import { SharedFileComponent } from './pages/sharedFile/sharedFile.component';
+import { Dialog } from './components/dialog/dialog.component';
+import { FileFormComponent } from './components/fIleForm/fileForm.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { ResendEmailComponent } from './pages/resendEmail/resendEmail.component'
     SpinnerComponent,
     MessageComponent,
     UserComponent,
-    ResendEmailComponent
+    ResendEmailComponent,
+    FilesComponent,
+    SharedFileComponent,
+    Dialog,
+    FileFormComponent
   ],
   imports: [
     BrowserModule,
